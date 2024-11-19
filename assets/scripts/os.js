@@ -380,11 +380,11 @@ function checkForFinish() {
             .then(res => res.json())
             .then(res => {
                 if (res[0].prerelease == "false") {
-                    sendNotification("Welcome to Fusion OS", "Fusion OS Release Name: " + res[0].name + " Version:" + res[0].tag_name)
+                    sendNotification("Welcome to Fusion OS Release Ver", "Fusion OS Release Name: " + res[0].name + " Version:" + res[0].tag_name)
 
                 }
                 else{
-                    sendNotification("Welcome to Fusion OS", "Fusion OS Release Name: " + res[0].name + " Version:" + res[0].tag_name + " WARNING VERSION IN PRERELEASE")
+                    sendNotification("Welcome to Fusion OS Prerelease", "Fusion OS Release Name: " + res[0].name + " Version:" + res[0].tag_name + " WARNING VERSION IN PRERELEASE")
 
                 }
          
