@@ -376,10 +376,10 @@ function checkForFinish() {
             pcodeInput.focus();
         } else {
             document.getElementById("clockwork-content").style = "";
-            fetch('https://api.github.com/repos/kkmfd-productions/kkmfd-productions.github.io/commits?per_page=')
+            fetch('https://api.github.com/repos/kkmfd-productions/kkmfd-productions.github.io/releases')
             .then(res => res.json())
             .then(res => {
-                sendNotification("Welcome to Fusion OS", "Fusion OS Latest Commit " + res[0].commit.message + " Author:" + res[0].commit.author)
+                sendNotification("Welcome to Fusion OS", "Fusion OS Release Name: " + res[0].name + " Version:" + res[0].tag_name)
          
             })
            
