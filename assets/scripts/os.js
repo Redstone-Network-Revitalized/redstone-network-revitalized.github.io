@@ -39,12 +39,6 @@ var plugins = null;
 
 var version = "2.0.0.0-RC";
 var versionNickname = "Release Pre-Release Canidate 1"
-fetch('https://api.github.com/repos/kkmfd-productions/kkmfd-productions.github.io/commits?per_page=')
-.then(res => res.json())
-.then(res => {
-  versionNickname=res[0].commit.message
-  version= res[0].commit.author
-})
 contextMenu.style.display = "none";
 
 Number.prototype.clamp = function (min, max) {
@@ -1025,7 +1019,7 @@ document.querySelector("body").addEventListener("click", onClick)
 
 function sendNotification(title, content) {
     let el = document.createElement("DIV");
-    var notifsfx = Audio("https://kkmfd-productions.github.io/assets/sfx/Open%20Image.mp3")
+    var notifsfx = new Audio("https://kkmfd-productions.github.io/assets/sfx/Open%20Image.mp3")
     notifsfx.play()
     el.className = "clockwork-notification";
     el.innerHTML = `<b>${title}</b><br>\n${content}`;
