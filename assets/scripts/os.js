@@ -376,7 +376,7 @@ function checkForFinish() {
             pcodeInput.focus();
         } else {
             document.getElementById("clockwork-content").style = "";
-            fetch('https://api.github.com/repos/kkmfd-productions/kkmfd-productions.github.io/releases')
+            fetch('https://api.github.com/repos/kkmfd-productions/kkmfd-productions.github.io/releases/latest')
             .then(res => res.json())
             .then(res => {
                 if (res[0].prerelease == "false") {
