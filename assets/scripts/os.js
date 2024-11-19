@@ -379,15 +379,8 @@ function checkForFinish() {
             fetch('https://api.github.com/repos/kkmfd-productions/kkmfd-productions.github.io/releases/latest')
             .then(res => res.json())
             .then(res => {
-                if (res[0].prerelease == "false") {
-                    sendNotification("Welcome to Fusion OS Release Ver", "Fusion OS Release Name: " + res[0].name + " Version:" + res[0].tag_name)
+                    sendNotification("Welcome to Fusion OS Offical Release", "Fusion OS Release Name: " + res[0].name + " Version:" + res[0].tag_name)
 
-                }
-                else{
-                    sendNotification("Welcome to Fusion OS Prerelease", "Fusion OS Release Name: " + res[0].name + " Version:" + res[0].tag_name + " WARNING VERSION IN PRERELEASE")
-
-                }
-         
             })
            
         }
