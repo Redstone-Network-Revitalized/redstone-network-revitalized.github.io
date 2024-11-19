@@ -37,8 +37,12 @@ var plugins = null;
 
 // PATCH is backwards-compatible changes for security and bug fixes only
 
-var version = "2.0.0.0-RC";
-var versionNickname = "Release Pre-Release Canidate 1"
+fetch('https://api.github.com/repos/kkmfd-productions/kkmfd-productions.github.io/commits?per_page=')
+.then(res => res.json())
+.then(res => {
+  var versionNickname=res[0].commit.message
+  var version= res[0].commit.author
+})
 
 contextMenu.style.display = "none";
 
