@@ -13,10 +13,13 @@ var currentApp = "home",
     appData = [],
     themeData = [],
     themes = null,
-    plugins = null,
-    version = "2.0.0.0-beta15.2",
-    versionNickname = "New Shoe";
-
+    plugins = null;
+fetch('https://api.github.com/repos/kkmfd-productions/kkmfd-productions.github.io/commits?per_page=')
+    .then(res => res.json())
+    .then(res => {
+      var versionNickname= res[0].commit.message
+      var version= res[0].commit.author
+    })
 function loadSettingsScreen(prescreen) {
     var screen = "string" == typeof prescreen ? settingsMenu.indexOf(settingsMenu.find((me => me.screenName == prescreen))) : prescreen;
     for (settingsCurrentScreen = screen; settingsRightBox.firstChild;) settingsRightBox.removeChild(settingsRightBox.lastChild);
@@ -155,12 +158,7 @@ function checkCDN(i) {
 }
 
 function checkForFinish() {
-    fetch('https://api.github.com/repos/kkmfd-productions/kkmfd-productions.github.io/commits?per_page=')
-    .then(res => res.json())
-    .then(res => {
-      versionNickname=res[0].commit.message
-      version= res[0].commit.author
-    })
+
     loadBar.max == loadBar.value ? (checkFinder(), document.getElementById("clockwork-loading").style = "display: none;", firstBoot ? (document.getElementById("clockwork-setup").style = "", setupScreenSwap("welcome")) : 1 == settings.lock.enabled || "true" == settings.lock.enabled ? (document.getElementById("clockwork-lock").style = "", document.getElementById("clockwork-lock").className = "clockwork-panel clockwork-panel-fadein", pcodeInput.focus()) : (document.getElementById("clockwork-content").style = "", sendNotification("Welcome to Fusion OS", "Fusion OS is currently running " + version + " " + versionNickname), sendNotification("Please update your bookmarklet or file", "beta15 adds useful changes to the bookmarklet - please update it if you haven't!"))) : setTimeout(checkForFinish, 500)
 }
 
