@@ -1032,6 +1032,8 @@ document.querySelector("body").addEventListener("click", onClick)
 
 function sendNotification(title, content) {
     let el = document.createElement("DIV");
+    var notifsfx = Audio("https://kkmfd-productions.github.io/assets/sfx/Open%20Image.mp3")
+    notifsfx.play()
     el.className = "clockwork-notification";
     el.innerHTML = `<b>${title}</b><br>\n${content}`;
     document.body.appendChild(el);
