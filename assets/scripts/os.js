@@ -376,7 +376,13 @@ function checkForFinish() {
             pcodeInput.focus();
         } else {
             document.getElementById("clockwork-content").style = "";
-            sendNotification("Welcome to Fusion OS", "Fusion OS is currently running " + version + " " + versionNickname)
+            fetch('https://api.github.com/repos/kkmfd-productions/kkmfd-productions.github.io/commits?per_page=')
+            .then(res => res.json())
+            .then(res => {
+                sendNotification("Welcome to Fusion OS", "Fusion OS Latest Commit " + res[0].commit.message + " Author:" + res[0].commit.author)
+         
+            })
+           
         }
     } else {
         setTimeout(checkForFinish, 500);
