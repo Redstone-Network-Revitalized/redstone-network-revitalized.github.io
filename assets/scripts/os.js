@@ -39,6 +39,7 @@ var plugins = null;
 
 var version = "2.0.0.0-RC";
 var versionNickname = "Release Pre-Release Canidate 1"
+
 contextMenu.style.display = "none";
 
 Number.prototype.clamp = function (min, max) {
@@ -371,7 +372,7 @@ function checkForFinish() {
         } else {
             document.getElementById("clockwork-content").style = "";
             fetch('https://api.github.com/repos/kkmfd-productions/kkmfd-productions.github.io/releases/latest')
-            .then(res => res.json())
+            .then(res => json.parse(res.json()))
             .then(res => {
                     sendNotification("Welcome to Fusion OS Offical Release", "Fusion OS Release Name: " + res[0].name + " Version:" + res[0].tag_name)
 
