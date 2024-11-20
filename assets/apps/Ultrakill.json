@@ -1,0 +1,12 @@
+{
+    "name": "Ultrakill",
+    "desc": "A Fanmade 2d version of Ultrakill",
+    "url": "https://theschoolmediaticarchive.github.io/CDG/Ultrakill",
+    "encodedUrl": "no",
+    "icon": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQq-o7QaYmzltkC7zoq6ZMZQNspoHBCEx3oxfMcB-HqzofszgGE7cNCEcPhOefSbKULUQE&usqp=CAU",
+    "version": "1.0.0",
+    "author": "skibidi",
+    "permissions": [
+        "installPlugin"
+    ]
+}

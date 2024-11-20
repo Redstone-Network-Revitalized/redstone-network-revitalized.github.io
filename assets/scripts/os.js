@@ -166,7 +166,7 @@ function loadSettingsScreen(prescreen) {
 function loadSettingsMenu() { // Loads up the settings menu (shocker)
     for (let i = 0; i < settingsMenu.length;) {
         let div = document.createElement("div");
-        div.innerHTML = `<img src="${settingsMenu[i].screenIcon}"> <span>${settingsMenu[i].screenName}</span>`
+        div.innerHTML = `<lord-icon src=${settingsMenu[i].screenIcon} trigger="hover" colors="primary:#ffffff" style="width:45px;height:45px"></lord-icon> <span>${settingsMenu[i].screenName}</span>`
         div.dataset.num = i;
         div.onclick = (e) => {
             loadSettingsScreen(Number(div.dataset.num))
@@ -370,14 +370,8 @@ function checkForFinish() {
             document.getElementById("clockwork-lock").className = "clockwork-panel clockwork-panel-fadein";
             pcodeInput.focus();
         } else {
-            document.getElementById("clockwork-content").style = "";
-            fetch('https://api.github.com/repos/kkmfd-productions/kkmfd-productions.github.io/commits')
-            .then(res => json.parse(res.json()))
-            .then(res => {
-                    sendNotification("Welcome to Fusion OS Offical Release", "Fusion OS Commit Message: " + res[0].message + "Last Commit Author:" + res[0].author)
-
-            })
-           
+            document.getElementById("clockwork-content").style = ""
+            sendNotification("Welcome to Fusion OS Offical Release", "Newest Additions:added")
         }
     } else {
         setTimeout(checkForFinish, 500);

@@ -1,7 +1,7 @@
 const settingsMenu = [
     {
         screenName: "Manage Apps",
-        screenIcon: "/assets/images/ui/app-window.png",
+        screenIcon: "https://cdn.lordicon.com/fkaukecx.json",
         screenContents: [{
             type: "scriptbox",
             value: function (div) {
@@ -31,7 +31,7 @@ const settingsMenu = [
     },
     {
         screenName: "Manage Themes",
-        screenIcon: "/assets/images/ui/paintbrush-on-app-window.png",
+        screenIcon: "https://cdn.lordicon.com/depeqmsz.json",
         screenContents: [{
             type: "scriptbox",
             value: function (div) {
@@ -60,7 +60,7 @@ const settingsMenu = [
     },
     {
         screenName: "Personalization",
-        screenIcon: "/assets/images/ui/paintbrush.png",
+        screenIcon: "https://cdn.lordicon.com/jnikqyih.json",
         screenContents: [{
             label: "Clock type",
             type: "dropdown",
@@ -152,70 +152,8 @@ const settingsMenu = [
         ]
     },
     {
-        screenName: "Passcode Settings",
-        screenIcon: "/assets/images/ui/key.png",
-        screenContents: [{
-            label: "What is this?",
-            type: "scriptbox",
-            value: function (div) {
-                div.innerHTML = `<p>
-        Clockwork now supports setting a passcode, which lets you lock down Clockwork for anyone but you. Note that if you lose your passcode, there is <b>no way to recover,</b> so please write it down somewhere!
-        </p>`;
-
-                var btn = document.createElement("btn");
-                if (settings.lock.enabled) btn.innerText = "Change passcode"
-                else btn.innerText = "Create new passcode";
-                btn.onclick = function (e) {
-                    var audio = new Audio("https://fusion-softworks-llc.github.io/assets/sfx/Select.mp3");
-                    audio.play();
-                    if (settings.lock.enabled) {
-                        if (prompt("Enter your old passcode.") != settings.lock.passcode) {
-                            alert("Incorrect passcode!")
-                            return;
-                        }
-                    }
-
-                    var newPasscode = prompt("Enter your new passcode (between 4 and 6 characters, numbers only)")
-
-                    if (!newPasscode.match(/^[0-9]{4,6}$/)) { alert("Passcode must be a number!"); return; }
-                    if (newPasscode.length > 6 || 4 > newPasscode.length) { alert("Passcode must be between 4 and 6 characters!"); return; }
-                    if (prompt("Type it again to confirm.") != newPasscode) { alert("Passcodes do not match!"); return; }
-
-                    settings.lock.enabled = true;
-                    settings.lock.passcode = newPasscode;
-
-                    loadSettingsScreen(3);
-                    alert("Success!");
-                    localStorage.setItem("settings", JSON.stringify(settings));
-                }
-                div.appendChild(btn);
-
-                div.innerHTML += " "
-                var btn = document.createElement("btn");
-                btn.innerText = "Remove passcode";
-                btn.onclick = function () {
-                    var audio = new Audio("https://fusion-softworks-llc.github.io/assets/sfx/Select.mp3");
-                    audio.play();
-                    if (settings.lock.enabled) {
-                        if (prompt("Enter your passcode.") != settings.lock.passcode) {
-                            alert("Incorrect passcode!")
-                            return;
-                        }
-                    }
-
-                    settings.lock.enabled = false;
-
-                    loadSettingsScreen(3);
-                    alert("Success!");
-                    localStorage.setItem("settings", JSON.stringify(settings));
-                }
-                if (settings.lock.enabled) div.appendChild(btn);
-            }
-        }]
-    },
-    {
         screenName: "Proxy Settings",
-        screenIcon: "/assets/images/ui/ultraviolet.png",
+        screenIcon: "https://cdn.lordicon.com/dkhzauae.json",
         screenContents: [{
             label: "Proxy",
             type: "dropdown",
@@ -236,13 +174,13 @@ const settingsMenu = [
     },
     {
         screenName: "Import & Export",
-        screenIcon: "/assets/images/ui/import-export.png",
+        screenIcon: "https://cdn.lordicon.com/xpgofwru.json",
         screenContents: [{
             label: "What is this?",
             type: "scriptbox",
             value: function (div) {
                 div.innerHTML = `<p>
-          This is a tool that allows you to import and export all the data stored in Clockwork. Exporting will export your data in a .cws file, which can be imported easily. Importing will require a .cws file, and will force-restart Clockwork. Also here is a Factory Reset option, which should only be used as a last resort (and will require your passcode.)
+          This is a tool that allows you to import and export all the data stored in Fusion OS. Exporting will export your data in a .cws file, which can be imported easily. Importing will require a .cws file, and will force-restart Fusion OS. Also here is a Factory Reset option, which should only be used as a last resort (and will require your passcode.)
           </p>`
                 var btn = document.createElement("btn");
                 btn.innerText = "Export"
@@ -301,7 +239,7 @@ const settingsMenu = [
                     audio.play();
                     if (prompt(`WAIT A MINUTE!
         
-Factory resets will remove ALL your data from Clockwork, including apps, themes and more. We highly suggest you export your data before you do this. To confirm you want to reset, type "factory reset" into the box below.`).toLowerCase() != "factory reset") {
+Factory resets will remove ALL your data from Fusion OS, including apps, themes and more. We highly suggest you export your data before you do this. To confirm you want to reset, type "factory reset" into the box below.`).toLowerCase() != "factory reset") {
                         alert("Aborting!")
                         return;
                     }
@@ -312,7 +250,7 @@ Factory resets will remove ALL your data from Clockwork, including apps, themes 
                         }
                     }
                     localStorage.clear();
-                    alert("Successfully reset Clockwork. Reloading...");
+                    alert("Successfully reset Fusion OS. Reloading...");
 
                     window.onbeforeunload = function (event) { }; // this makes it so it doesn't reload
                     document.location.reload();
@@ -324,7 +262,7 @@ Factory resets will remove ALL your data from Clockwork, including apps, themes 
     },
     {
         screenName: "About Fusion OS",
-        screenIcon: "/assets/images/ui/clockwork.png",
+        screenIcon: "https://cdn.lordicon.com/kgdqzapd.json",
         screenContents: [{
             type: "scriptbox",
             value: function (div) {
