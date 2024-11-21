@@ -32,6 +32,18 @@
     }
 }
 
+@keyframes osfadein {
+    from {
+        bottom: 300;
+        filter: opacity(0%);
+    }
+
+    to {
+        bottom: 0;
+        filter: opacity(100%);
+    }
+}
+
 @keyframes animnotif {
     from {
         top: -560px;
@@ -148,6 +160,9 @@ t {
     background-image: url("/assets/images/wallpapers/default.png");
     background-size: cover;
     background-position: center;
+    animation-name: fadein;
+    animation-duration: 4s;
+    animation-timing-function: ease-in;
     display: block;
     width: 100vw;
     height: 100vh;
@@ -241,7 +256,16 @@ progress::-webkit-progress-value {
     top: 0vh;
     background-color: black;
 }
-
+.clockwork-panel-loadfade {
+    color: white;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    animation-name: fadein;
+    animation-duration: 0.3s;
+    bottom: 0vh;
+    filter: opacity(100%);
+}
 .clockwork-panel>div {
     text-align: center;
     position: fixed;
@@ -315,6 +339,10 @@ btn>.appbtnopen {
     position: fixed;
     bottom: 0;
     right: 0;
+    animation-name: osfadein;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 4000ms;
     font-size: 0px;
     display: flex;
     justify-content: right;
@@ -335,6 +363,10 @@ btn>.appbtnopen {
     height: 24px;
     color: white;
     text-align: center;
+    animation-name: osfadein;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 4000ms;
     vertical-align: middle;
     transition: 0.2s;
     user-select: none;
@@ -364,6 +396,10 @@ btn>.appbtnopen {
     backdrop-filter: blur(50px);
     position: fixed;
     bottom: 0;
+    animation-name: osfadein;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 4000ms;
     font-size: 0px;
     display: flex;
     overflow-y: auto;
@@ -375,6 +411,10 @@ btn>.appbtnopen {
     background-color: rgba(17, 17, 17, 0);
     color: white;
     text-align: center;
+    animation-name: osfadein;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 4000ms;
     word-break: break-all;
     vertical-align: middle;
     transition: 0.15s;
