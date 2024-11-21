@@ -356,23 +356,38 @@ function checkCDN(i) {
 checkCDN(0)
 
 document.getElementById("clockwork-content").style = "display: none;";
-
+function finishstart() 
+{
+    var audio2 = new Audio("/os/music/menu.mp3");
+    audio2.loop = true
+    audio2.play()
+    checkFinder();
+    document.getElementById("clockwork-loading").style = "display: none;";
+    if (firstBoot) {
+        document.getElementById("clockwork-setup").style = "";
+        setupScreenSwap("welcome")
+    } else if (settings.lock.enabled == true || settings.lock.enabled == "true") {
+        document.getElementById("clockwork-lock").style = "";
+        document.getElementById("clockwork-lock").className = "clockwork-panel clockwork-panel-fadein";
+        pcodeInput.focus();
+    } else {
+        document.getElementById("clockwork-content").style = ""
+        var audio3 = new Audio("/assets/sfx/Open Image.mp3");
+        audio3.play()
+        sendNotification("Welcome to Fusion OS Offical Release", "Newest Additions:added")
+    }
+    sendNotification("Music Player","Playing [BG MUSIC 01]")
+}
 // loading screen
 function checkForFinish() {
     if (loadBar.max == loadBar.value) {
-        checkFinder();
-        document.getElementById("clockwork-loading").style = "display: none;";
-        if (firstBoot) {
-            document.getElementById("clockwork-setup").style = "";
-            setupScreenSwap("welcome")
-        } else if (settings.lock.enabled == true || settings.lock.enabled == "true") {
-            document.getElementById("clockwork-lock").style = "";
-            document.getElementById("clockwork-lock").className = "clockwork-panel clockwork-panel-fadein";
-            pcodeInput.focus();
-        } else {
-            document.getElementById("clockwork-content").style = ""
-            sendNotification("Welcome to Fusion OS Offical Release", "Newest Additions:added")
-        }
+        document.getElementById("cw-iconload").style = "display: none;";
+        document.getElementById("cw-load-bar").style = "display: none;";
+        document.getElementById("cw-continueload").style = "";
+        document.getElementById("cw-continueload1").style = "";
+        document.getElementById("cw-loadwarning").style = "";
+        sendNotification("Loader","Loading Complete")
+
     } else {
         setTimeout(checkForFinish, 500);
     }
@@ -610,7 +625,7 @@ async function promptInstallApp(url, params) {
         }
     }
 }
-
+var musicisplaying = false
 function openApp(app, url, encoded) {
     if (app == null || app == undefined) {
         throw "app ID is undefined";

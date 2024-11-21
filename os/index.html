@@ -42,6 +42,7 @@
         <div>
             <h1>
                 <lord-icon
+    id="cw-iconload"
     src="https://cdn.lordicon.com/dupxuoaa.json"
     trigger="loop"
     state="loop-transparency"
@@ -49,7 +50,10 @@
     style="width:250px;height:250px">
 </lord-icon>
             </h1>
+            <p id="cw-continueload" style="display: none;">Click continue to load the OS</p>
+            <p id="cw-loadwarning" style="display: none;">Warning Music Ahead Please Use Headphones or Mute volume</p>
             <progress id="cw-load-bar" value="0" max="100"> 32% </progress>
+            <btn id="cw-continueload1" onclick="finishstart()" style="display: none;">Continue</btn>
         </div>
 
     </span>
@@ -115,11 +119,11 @@
     delay="1500"
     state="in-work"
     colors="primary:#c71f16"
-    style="width:250px;height:250px">
+    style="width:100px;height:100px">
 </lord-icon>
             </p>
             <div class="apps-to-install">
-                I LIKE MY SUITCASE
+               
             </div>
             <btn onclick="setupScreenSwap('finish')">Continue</btn>
         </div>
