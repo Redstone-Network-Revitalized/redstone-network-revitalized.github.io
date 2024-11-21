@@ -152,6 +152,59 @@ const settingsMenu = [
         ]
     },
     {
+        screenName: "Passcode Settings",
+        screenIcon: "https://cdn.lordicon.com/sbrtyqxj.json",
+        screenContents: [{
+            label: "What is this?",
+            type: "scriptbox",
+            value: function (div) {
+                div.innerHTML = `<p>
+        Fusion OS now supports setting a passcode, which lets you lock down Fusion OS for anyone but you. Note that if you lose your passcode, there is <b>no way to recover,</b> so please write it down somewhere!
+        </p>`;
+                var btn = document.createElement("btn");
+                if (settings.lock.enabled) btn.innerText = "Change passcode"
+                else btn.innerText = "Create new passcode";
+                btn.onclick = function () {
+                print("ive been clicked")
+                    if (settings.lock.enabled) {
+                        if (prompt("Enter your old passcode.") != settings.lock.passcode) {
+                            alert("Incorrect passcode!")
+                            return;
+                        }
+                    }
+                    var newPasscode = prompt("Enter your new passcode (between 4 and 6 characters, numbers only)")
+                    if (!newPasscode.match(/^[0-9]{4,6}$/)) { alert("Passcode must be a number!"); return; }
+                    if (newPasscode.length > 6 || 4 > newPasscode.length) { alert("Passcode must be between 4 and 6 characters!"); return; }
+                    if (prompt("Type it again to confirm.") != newPasscode) { alert("Passcodes do not match!"); return; }
+                    settings.lock.enabled = true;
+                    settings.lock.passcode = newPasscode;
+                    loadSettingsScreen(3);
+                    alert("Success!");
+                    localStorage.setItem("settings", JSON.stringify(settings));
+                }
+                div.appendChild(btn);
+                div.innerHTML += " "
+                var btn = document.createElement("btn");
+                btn.innerText = "Remove passcode";
+                btn.onclick = function () {
+                    var audio = new Audio("https://fusion-softworks-llc.github.io/assets/sfx/Select.mp3");
+                    audio.play();
+                    if (settings.lock.enabled) {
+                        if (prompt("Enter your passcode.") != settings.lock.passcode) {
+                            alert("Incorrect passcode!")
+                            return;
+                        }
+                    }
+                    settings.lock.enabled = false;
+                    loadSettingsScreen(3);
+                    alert("Success!");
+                    localStorage.setItem("settings", JSON.stringify(settings));
+                }
+                if (settings.lock.enabled) div.appendChild(btn);
+            }
+        }]
+    },
+    {
         screenName: "Proxy Settings",
         screenIcon: "https://cdn.lordicon.com/dkhzauae.json",
         screenContents: [{
