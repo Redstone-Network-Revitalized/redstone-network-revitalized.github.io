@@ -27,6 +27,9 @@ class Clockwork {
     requestFullscreen(url) {
         window.parent.postMessage(["base", "requestFullscreen", url, clockwork_my_id], "*");
     }
+    get isInClockwork() {
+        return (window !== window.parent) && (clockwork_my_id != null);
+    }
     get isActiveApp() {
         return false;
     }
