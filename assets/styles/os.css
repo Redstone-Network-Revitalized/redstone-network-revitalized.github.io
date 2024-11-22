@@ -637,7 +637,99 @@ a:hover {
     padding-left: 10px;
     display: block;
 }
+#apppanel\:sys_music.appopen {
+    filter: opacity(100%);
+    transition: 0.2s;
+}
 
+#apppanel\:sys_music .left {
+    position: fixed;
+    width: 16vw;
+    border-right: 1px gray solid;
+    height: calc(100vh - 49px);
+    overflow-y: auto;
+}
+
+#apppanel\:sys_music .left .selections {
+    border-top: 1px gray solid;
+}
+
+#apppanel\:sys_music .left .selections div {
+    border-bottom: 1px gray solid;
+    height: 48px;
+    position: relative;
+    transition: 0.2s;
+}
+
+#apppanel\:sys_music .left .selections div:hover {
+    background-color: rgba(128, 128, 128, 0.65);
+    transition: 0.2s;
+}
+
+#apppanel\:sys_music .left .selections div img {
+    height: 32px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 4px;
+}
+
+#apppanel\:sys_music .left .selections div span {
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 42px;
+    width: calc(100% - 42px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#apppanel\:sys_music .right {
+    width: 84vw;
+    height: calc(100vh - 49px);
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    padding: 6px;
+    box-sizing: border-box;
+}
+
+#apppanel\:sys_music .right h2 {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+#apppanel\:sys_music .right div {
+    margin-bottom: 6px;
+}
+
+#apppanel\:sys_music .right div .text {
+    max-width: 100%;
+    display: inline-block;
+    width: 100%;
+    font-size: 16px;
+    text-align: left;
+    padding: 4px;
+    box-sizing: border-box;
+}
+
+#apppanel\:sys_music .right div .dropdown {
+    max-width: 256px;
+    text-overflow: ellipsis;
+    display: inline-block;
+    font-size: 18px;
+    text-align: left;
+    padding: 4px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#apppanel\:sys_music .right div .label {
+    font-size: 20px;
+    padding-left: 10px;
+    display: block;
+}
 #settings-wallpaper-box div {
     background-color: #111;
     border-radius: 8px;

@@ -173,6 +173,35 @@
             <div class="app appopen" id="apppanel:sys_home">
 
             </div>
+            <div class="app" id="apppanel:sys_music">
+                <div class="left">
+                    <h1>Music</h1>
+                    <div class="selections">
+                      <div id="bgmus1" onclick="changemusic('/os/music/menu.mp3',false,'Fusion Original Music')">
+                        <lord-icon src="https://cdn.lordicon.com/becebamh.json" trigger="hover" colors="primary:#ffffff" style="width:45px;height:45px"></lord-icon>
+                         <span>Fusion Original Music</span>
+                      </div>
+                      <div id="bgmus2" onclick="changemusic('/os/music/revolve.mp3',false,'Revolve R Mix - Cinematrix')">
+                        <lord-icon src="https://cdn.lordicon.com/becebamh.json" trigger="hover" colors="primary:#ffffff" style="width:45px;height:45px"></lord-icon>
+                         <span>Revolve R Mix - Cinematrix</span>
+                      </div>
+                      <div id="bgmute" onclick="changemusic('',true,'')">
+                        <script src="https://cdn.lordicon.com/lordicon.js"></script>
+                        <lord-icon
+                            src="https://cdn.lordicon.com/becebamh.json"
+                            trigger="hover"
+                            state="morph-play-pause"
+                            colors="primary:#e4e4e4"
+                            style="width:45px;height:45px">
+                        </lord-icon>                         <span>Mute Music</span>
+                      </div>
+                    </div>
+
+                </div>
+                <div class="right">
+
+                </div>
+            </div>
             <div class="app" id="apppanel:sys_settings">
                 <div class="left">
                     <h1>Settings</h1>
@@ -189,7 +218,12 @@
 
         <div id="appbar">
             <btn id="appbar:sys_home" onclick="openApp('sys_home');" class="open">
-                <img src="/assets/images/ui/home.png">
+                <lord-icon
+                src="https://cdn.lordicon.com/wmwqvixz.json"
+                trigger="hover"
+                colors="primary:#e4e4e4"
+                style="width:50px;height:50px">
+            </lord-icon>
             </btn>
             <btn id="appbar:sys_settings" onclick="openApp('sys_settings');">
                 <lord-icon
@@ -200,16 +234,30 @@
                     style="width:50px;height:50px">
                 </lord-icon>
             </btn>
+            <btn id="appbar:sys_music" onclick="openApp('sys_music');">
+                <lord-icon
+                    src="https://cdn.lordicon.com/becebamh.json"
+                    trigger="hover"
+                    colors="primary:#e4e4e4"
+                    style="width:50px;height:50px">
+                </lord-icon>
+            </btn>
         </div>
         <div id="appsidebar">
             <div id="appsidebar-clock">...</div>
             <btn onclick="openNotificationPanel();">
-                <img id="appsidebar:notifs" src="/assets/images/ui/bell.png">
+            <lord-icon src="https://cdn.lordicon.com/lznlxwtc.json" id="appsidebar:notifs" trigger="click" colors="primary:#e4e4e4" style="width:20px;height:20px"></lord-icon>
             </btn>
         </div>
         <div id="clockwork-notification-panel" class="visible">
             <t>Notifications
-                <img src="/assets/images/ui/trash-can.png" onclick="clearAllNotifs();">
+                <lord-icon
+    src="https://cdn.lordicon.com/skkahier.json"
+    onclick="clearAllNotifs();"
+    trigger="click"
+    colors="primary:#e4e4e4"
+    style="width:20px;height:20px">
+</lord-icon>
             </t>
             <span id="clockwork-notification-items">You're all caught up!</span>
         </div>

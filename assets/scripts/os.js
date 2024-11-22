@@ -6,7 +6,7 @@ const finder = document.querySelector(".finder");
 const finderBox = document.querySelector(".finder-box");
 const settingsLeftBox = document.querySelector("#apppanel\\:sys_settings .left .selections")
 const settingsRightBox = document.querySelector("#apppanel\\:sys_settings .right")
-
+var audio2 = new Audio("/os/music/menu.mp3");
 const yes = true;
 const no = false;
 
@@ -356,9 +356,10 @@ function checkCDN(i) {
 checkCDN(0)
 
 document.getElementById("clockwork-content").style = "display: none;";
+
 function finishstart() 
 {
-    var audio2 = new Audio("/os/music/menu.mp3");
+
     audio2.loop = true
     audio2.play()
     checkFinder();
@@ -1029,7 +1030,7 @@ document.querySelector("body").addEventListener("click", onClick)
 
 function sendNotification(title, content) {
     let el = document.createElement("DIV");
-    var notifsfx = new Audio("https://kkmfd-productions.github.io/assets/sfx/Open%20Image.mp3")
+    var notifsfx = new Audio("/assets/sfx/Open Image.mp3")
     notifsfx.play()
     el.className = "clockwork-notification";
     el.innerHTML = `<b>${title}</b><br>\n${content}`;
@@ -1045,11 +1046,22 @@ function sendNotification(title, content) {
     }
     document.getElementById("clockwork-notification-items").innerHTML += `<div><b>${title} <img src="assets/images/ui/x.png" 
   onclick="notifDestroy(this);"></b>\n${content}</div>`;
-    if (!notifPanelOpen) {
-        document.getElementById("appsidebar:notifs").src = "assets/images/ui/ringing-bell.png"
-    }
 }
-
+function changemusic(musicurl,mute,songname) 
+{
+if (mute == true) {
+audio2.pause()
+sendNotification("Music Player","Music Now Muted")
+audio2.currentTime = 0
+}
+else
+{
+audio2.src = musicurl
+audio2.currentTime = 0
+sendNotification("Music Player","Now Playing: " + songname)
+audio2.play()
+}
+}
 var notifPanelOpen = false;
 
 function openNotificationPanel() {
@@ -1057,7 +1069,6 @@ function openNotificationPanel() {
         setTimeout(function () {
             notificationPanel.className = "visible";
         }, 10)
-        document.getElementById("appsidebar:notifs").src = "assets/images/ui/bell.png"
         notifPanelOpen = true;
     } else {
         notificationPanel.className = "invisible";
