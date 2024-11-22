@@ -110,6 +110,11 @@ const settingsMenu = [
                         title: "Grand Canyon by Bernard Spragg",
                         url: "/assets/images/wallpapers/grand-canyon.jpg",
                         preview: "/assets/images/wallpaper-previews/grand-canyon.png"
+                    },
+                    {
+                        title: "Can We Get Much Higher",
+                        url: "/assets/images/wallpapers/canwegetmuchhigher.png",
+                        preview: "/assets/images/wallpaper-previews/canwegetmuchhigher.png"
                     }
                 ]
                 for (let i = 0; i < defaultWallpapers.length;) {

@@ -6,7 +6,7 @@ const finder = document.querySelector(".finder");
 const finderBox = document.querySelector(".finder-box");
 const settingsLeftBox = document.querySelector("#apppanel\\:sys_settings .left .selections")
 const settingsRightBox = document.querySelector("#apppanel\\:sys_settings .right")
-var audio2 = new Audio("/os/music/menu.mp3");
+var audio2 = new Audio("/os/music/revolve.mp3");
 const yes = true;
 const no = false;
 
@@ -37,8 +37,8 @@ var plugins = null;
 
 // PATCH is backwards-compatible changes for security and bug fixes only
 
-var version = "2.0.0.0-RC";
-var versionNickname = "Release Pre-Release Canidate 1"
+var version = "2.1.0.0-RC";
+var versionNickname = "Release"
 
 contextMenu.style.display = "none";
 
