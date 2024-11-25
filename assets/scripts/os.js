@@ -2,11 +2,20 @@ const contextMenu = document.getElementById("contextmenu")
 const appPanel = document.getElementById("apppanel");
 const appBar = document.getElementById("appbar");
 const loadBar = document.getElementById("cw-load-bar");
+const loadItems = document.getElementById("cw-loaditems");
 const finder = document.querySelector(".finder");
 const finderBox = document.querySelector(".finder-box");
 const settingsLeftBox = document.querySelector("#apppanel\\:sys_settings .left .selections")
 const settingsRightBox = document.querySelector("#apppanel\\:sys_settings .right")
-var audio2 = new Audio("/os/music/revolve.mp3");
+
+if (localStorage.getItem("music") == "muted") {
+    var audio2 = new Audio("/os/music/revolve.mp3");
+}
+else
+{
+    var audio2 = new Audio(localStorage.getItem("music"));
+}
+
 const yes = true;
 const no = false;
 
@@ -279,6 +288,7 @@ var firstBoot = false;
 if (localStorage.getItem("settings") == null || localStorage.getItem("settings") == "!!reset") {
     localStorage.setItem("settings", JSON.stringify(defaultSettings));
     settings = defaultSettings;
+    localStorage.setItem("music","muted")
     firstBoot = true;
 } else {
     settings = JSON.parse(localStorage.getItem("settings"));
@@ -323,7 +333,7 @@ if (localStorage.getItem("apps") == null || localStorage.getItem("apps") == "!!r
     apps = JSON.parse(localStorage.getItem("apps"));
 }
 
-loadBar.max = apps.length + themes.length + plugins.length + 1;
+loadBar.max = apps.length + themes.length + plugins.length + 5 + 5 + 5 + 1;
 loadBar.value = 0;
 
 function checkCDN(i) {
@@ -333,28 +343,60 @@ function checkCDN(i) {
     }).then((response) => {
         if (response.ok) {
             currentCDN = cdns[i][1]
+            loadItems.innerText = "Loaded:" + cdns[i][1]
             ++loadBar.value
             for (let i = 0; i < apps.length; i++) {
+                setTimeout(function() {
                 installApp(apps[i], {
                     start: true
                 });
+                loadItems.innerText = "Loaded:" + apps[i]
+            }, 500);
             }
             for (let i = 0; i < themes.length; i++) {
+                setTimeout(function() {
                 installTheme(themes[i]);
                 ++loadBar.value;
+                loadItems.innerText = "Loaded:" + themes[i]
+                }, 500);
             }
 
             for (let i = 0; i < plugins.length; i++) {
+                setTimeout(function() {
                 installPlugin(plugins[i]);
+                loadItems.innerText = "Loaded:" + plugins[i]
                 ++loadBar.value;
+                },500);
+            }
+            for (let i = 0; i < 5; i++) {
+                setTimeout(function(){
+                loadItems.innerText = "Loaded:" + localStorage.getItem("music")
+                ++loadBar.value;
+            }, 500);
+            }
+            for (let i = 0; i < 5; i++) {
+                setTimeout(function(){
+                
+                loadItems.innerText = "Loaded: /assets/scripts/icons/iconanimate.js"
+                ++loadBar.value;
+                }, 500);
+            }
+            for (let i = 0; i < 5; i++) {
+                setTimeout(function(){
+                    loadItems.innerText = "Loaded Wallpaper:" + settings.wallpaper
+                    ++loadBar.value;
+                }, 500);
+               
             }
         } else {
             checkCDN(++i)
         }
     })
 }
+function startcdn() {
+document.getElementById("startloadbtn").style = "display: none;";
 checkCDN(0)
-
+}
 document.getElementById("clockwork-content").style = "display: none;";
 
 function finishstart() 
@@ -384,6 +426,7 @@ function checkForFinish() {
     if (loadBar.max == loadBar.value) {
         document.getElementById("cw-iconload").style = "display: none;";
         document.getElementById("cw-load-bar").style = "display: none;";
+        loadItems.style = "display: none;";
         document.getElementById("cw-continueload").style = "";
         document.getElementById("cw-continueload1").style = "";
         document.getElementById("cw-loadwarning").style = "";
@@ -1051,12 +1094,14 @@ function changemusic(musicurl,mute,songname)
 {
 if (mute == true) {
 audio2.pause()
+localStorage.setItem("music","muted")
 sendNotification("Music Player","Music Now Muted")
 audio2.currentTime = 0
 }
 else
 {
 audio2.src = musicurl
+localStorage.setItem("music",musicurl)
 audio2.currentTime = 0
 sendNotification("Music Player","Now Playing: " + songname)
 audio2.play()
