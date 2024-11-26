@@ -335,7 +335,7 @@ if (localStorage.getItem("apps") == null || localStorage.getItem("apps") == "!!r
 
 loadBar.max = apps.length + themes.length + plugins.length + 5 + 5 + 5 + 1;
 loadBar.value = 0;
-
+musiclist = JSON.stringify(localStorage.getItem("musiclist"))
 function checkCDN(i) {
     let response = fetch(cdns[i][0], {
         cache: "reload",
@@ -345,20 +345,23 @@ function checkCDN(i) {
             currentCDN = cdns[i][1]
             loadItems.innerText = "Loaded:" + cdns[i][1]
             ++loadBar.value
+    
             for (let i = 0; i < apps.length; i++) {
                 setTimeout(function() {
+                console.log(apps[i])
                 installApp(apps[i], {
                     start: true
                 });
                 loadItems.innerText = "Loaded:" + apps[i]
-            }, 500);
+            }, 2000);
             }
             for (let i = 0; i < themes.length; i++) {
                 setTimeout(function() {
                 installTheme(themes[i]);
+                console.log(themes[i])
                 ++loadBar.value;
                 loadItems.innerText = "Loaded:" + themes[i]
-                }, 500);
+                }, 2000);
             }
 
             for (let i = 0; i < plugins.length; i++) {
@@ -370,23 +373,33 @@ function checkCDN(i) {
             }
             for (let i = 0; i < 5; i++) {
                 setTimeout(function(){
-                loadItems.innerText = "Loaded:" + localStorage.getItem("music")
-                ++loadBar.value;
-            }, 500);
+            
+            }, 2000);
+            console.log(localStorage.getItem("music"))
+            loadItems.innerText = "Loaded:" + localStorage.getItem("music")
+            ++loadBar.value;
             }
             for (let i = 0; i < 5; i++) {
                 setTimeout(function(){
                 
                 loadItems.innerText = "Loaded: /assets/scripts/icons/iconanimate.js"
                 ++loadBar.value;
-                }, 500);
+                }, 2000);
             }
             for (let i = 0; i < 5; i++) {
                 setTimeout(function(){
+                    console.log(settings.wallpaper)
                     loadItems.innerText = "Loaded Wallpaper:" + settings.wallpaper
                     ++loadBar.value;
-                }, 500);
+                }, 2000);
                
+            }
+            for (let i = 0; i < musiclist.length; i++) {
+                setTimeout(function() {
+              
+            }, 2000);
+            console.log(musiclist[i])
+            loadItems.innerText = "Loaded:" + musiclist[i]
             }
         } else {
             checkCDN(++i)
