@@ -318,6 +318,22 @@ Factory resets will remove ALL your data from Fusion OS, including apps, themes 
         }
         ]
     },
+    //https://cdn.lordicon.com/mqdkoaef.json
+    {
+        screenName: "Basic Store",
+        screenIcon: "https://cdn.lordicon.com/mqdkoaef.json",
+        screenContents: [{
+            type: "scriptbox",
+            value: function (div) {
+                var btn = document.createElement("btn");
+                btn.innerText = "Install Ultrakill"
+                btn.onclick = function () {
+                    promptInstallApp("/assets/apps/Ultrakill.json")
+                }
+                div.appendChild(btn);
+            }
+        }]
+    },
     {
         screenName: "About Fusion OS",
         screenIcon: "https://cdn.lordicon.com/kgdqzapd.json",
