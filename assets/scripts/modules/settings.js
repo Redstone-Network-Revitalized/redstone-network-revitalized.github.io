@@ -331,6 +331,18 @@ Factory resets will remove ALL your data from Fusion OS, including apps, themes 
                     promptInstallApp("/assets/apps/Ultrakill.json")
                 }
                 div.appendChild(btn);
+                var btn = document.createElement("btn");
+                btn.innerText = "Install :MOAI:"
+                btn.onclick = function () {
+                    promptInstallApp("/assets/apps/clsroom.json")
+                }
+                div.appendChild(btn);
+                var btn = document.createElement("btn");
+                btn.innerText = "Install SM64"
+                btn.onclick = function () {
+                    promptInstallApp("/assets/apps/sm64.json")
+                }
+                div.appendChild(btn);
             }
         }]
     },

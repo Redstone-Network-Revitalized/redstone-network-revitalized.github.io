@@ -427,7 +427,7 @@ function finishstart()
         pcodeInput.focus();
     } else {
         document.getElementById("clockwork-content").style = ""
-        var audio3 = new Audio("/assets/sfx/Open Image.mp3");
+        var audio3 = new Audio("/assets/sfx/deck_ui_message_toast.wav");
         audio3.play()
         sendNotification("Welcome to Fusion OS Offical Release", "Newest Additions:added")
     }
@@ -686,7 +686,7 @@ function openApp(app, url, encoded) {
     if (app == null || app == undefined) {
         throw "app ID is undefined";
     }
-    var audio = new Audio("https://fusion-softworks-llc.github.io/assets/sfx/Select.mp3");
+    var audio = new Audio("/assets/sfx/deck_ui_into_game_detail.wav");
     audio.play();
     currentApp = app;
     for (const child of document.getElementById("appbar").children) {
@@ -742,7 +742,7 @@ function closeApp(app) {
     if (app == null || app == undefined) {
         throw "app ID is undefined";
     }
-    var audio = new Audio("https://fusion-softworks-llc.github.io/assets/sfx/Back.mp3");
+    var audio = new Audio("/assets/sfx/deck_ui_out_of_game_detail.wav");
     audio.play();
     for (const child of appPanel.children) {
         if (child.id == "apppanel:" + app) {
@@ -761,7 +761,7 @@ function moveApp(app, type, plus) {
     if (app == null || app == undefined) {
         throw "app ID is undefined";
     }
-    var audio = new Audio("https://fusion-softworks-llc.github.io/assets/sfx/Move.mp3");
+    var audio = new Audio("/assets/sfx/deck_ui_show_ui.wav");
     audio.play();
     var appIndex = apps.indexOf(app);
     if (appIndex != undefined) {
@@ -1085,7 +1085,7 @@ document.querySelector("body").addEventListener("click", onClick)
 
 function sendNotification(title, content) {
     let el = document.createElement("DIV");
-    var notifsfx = new Audio("/assets/sfx/Open Image.mp3")
+    var notifsfx = new Audio("/assets/sfx/decK_ui_message_toast.wav")
     notifsfx.play()
     el.className = "clockwork-notification";
     el.innerHTML = `<b>${title}</b><br>\n${content}`;
